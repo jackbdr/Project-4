@@ -21,14 +21,14 @@ class Animal(models.Model):
     lat = models.DecimalField(max_digits=22, decimal_places=16, default=None)
     long = models.DecimalField(max_digits=22, decimal_places=16, default=None)
     img_1 = models.CharField(max_length=500)
-    img_2 = models.CharField(max_length=500)
-    admin_rating = models.PositiveIntegerField(default=None)
-    # added_by = models.ForeignKey(
-    #     'jwt_auth.User',
-    #     related_name='animals',
-    #     on_delete=models.CASCADE,
-    #     default=1
-    # )
+    img_2 = models.CharField(max_length=500, null=True)
+    admin_rating = models.PositiveIntegerField(default=None, null=True)
+    added_by = models.ForeignKey(
+        'jwt_auth.User',
+        related_name='animals',
+        on_delete=models.CASCADE,
+        default=1
+    )
 
     def __str__(self):
         return f"{self.name}"

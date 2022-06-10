@@ -19,9 +19,9 @@ class AnimalListView(APIView):
     # GET all
     def get(self, _request):
         animals = Animal.objects.all() 
-        # use serializer to conver to python data type
-        serialized_albums = AnimalSerializer(animals, many=True)
-        return Response(serialized_albums.data, status=status.HTTP_200_OK) 
+        # use serializer to convert to python data type
+        serialized_animals = AnimalSerializer(animals, many=True)
+        return Response(serialized_animals.data, status=status.HTTP_200_OK) 
 
     # POST one
     def post(self, request):
@@ -56,7 +56,7 @@ class AnimalDetailView(APIView):
     # DELETE one
     def delete(self, _request, pk):
         print('PK ->', pk)
-        animal_to_delete = self.get_album(pk)
+        animal_to_delete = self.get_animal(pk)
         animal_to_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

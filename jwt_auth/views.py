@@ -8,7 +8,10 @@ from datetime import datetime, timedelta # timestamps in different formats
 
 from django.conf import settings
 
+from animals.serializers.populated import PopulatedAnimalSerializer
+
 from .serializers.common import UserSerializer
+from .serializers.populated import PopulatedUserSerializer
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -18,7 +21,7 @@ class RegisterView(APIView):
     def post(self, request):
         user_to_add = UserSerializer(data=request.data)
         try:
-            user_to_add.is_valid()
+            user_to_add.is_valid(True)
             print("errors ->", user_to_add.errors)
             user_to_add.save()
             return Response({ "message": "Registration Successful" }, status.HTTP_202_ACCEPTED)
@@ -51,3 +54,16 @@ class LoginView(APIView):
         )
 
         return Response({ "message": f"Welcome back, {user_to_validate.username}", "token": token }, status.HTTP_202_ACCEPTED)
+
+# * /users/
+class UsersViewAll(APIView):
+
+    def get(self, _request):
+        users = User.objects.all()
+        serialized_users = PopulatedUserSerializer(users, many=True)
+        return Response(serialized_users.data, status=status.HTTP_200_OK)
+
+class UsersViewOne(APIView):
+
+    def get(self, _request, pk):
+        user = User.objects.get()

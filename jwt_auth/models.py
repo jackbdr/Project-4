@@ -9,3 +9,4 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     profile_img = models.CharField(max_length=300, blank=True, null=True)
+
