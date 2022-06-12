@@ -25,6 +25,7 @@ class AnimalListView(APIView):
 
     # POST one
     def post(self, request):
+        request.data['added_by'] = request.user.id
         deserialized_animal = AnimalSerializer(data=request.data)
         try:
             deserialized_animal.is_valid()
@@ -38,6 +39,7 @@ class AnimalListView(APIView):
 
 # * /animals/:pk/
 class AnimalDetailView(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def get_animal(self, pk):
         try:
@@ -63,9 +65,12 @@ class AnimalDetailView(APIView):
     # PUT - This function will update the existing record with new data
     def put(self, request, pk):
         animal_to_update = self.get_animal(pk=pk)
+        print("animal to update ->", animal_to_update)
+        print("request ->", request.data)
         deserialized_animal = AnimalSerializer(animal_to_update, request.data)
+        print("edited animal -> ", deserialized_animal)
         try:
-            deserialized_animal.is_valid()
+            deserialized_animal.is_valid(True)
             deserialized_animal.save()
             return Response(deserialized_animal.data, status.HTTP_202_ACCEPTED)
         except Exception as e:

@@ -2,7 +2,13 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom"
 import React from 'react'
 
-import AnimalsAll from "./animals/AnimalsAll"
+import Home from "./components/Home"
+import AnimalsAll from "./components/animals/AnimalsAll"
+import DisplayMap from "./components/explore/MapPage"
+import AnimalDetail from "./components/animals/AnimalDetail"
+import AnimalAdd from "./components/animals/AnimalAdd"
+import AnimalEdit from "./components/animals/AnimalEdit"
+
 
 const App = () => {
 
@@ -10,7 +16,12 @@ const App = () => {
     <main className="site-wrapper">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/map" element={<DisplayMap />} />
           <Route path="/animals" element={<AnimalsAll />} />
+          <Route path="/animals/:id" element={<AnimalDetail />} />
+          <Route path="/animals/add" element={<AnimalAdd />} />
+          <Route path="/animals/:id/edit" element={<AnimalEdit />} />
         </Routes>
       </BrowserRouter>
     </main>

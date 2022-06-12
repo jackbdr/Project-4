@@ -1,10 +1,13 @@
 from .common import UserSerializer
 from animals.serializers.common import AnimalSerializer
-from rest_framework import serializers
-from ..models import User
+from comments.serializers.common import CommentSerializer
 
-class PopulatedUserSerializer(serializers.ModelSerializer):
-    animals = AnimalSerializer()
-    class Meta:
-        model = User
-        fields = '__all__'
+# class PopulatedUserSerializer(serializers.ModelSerializer):
+#     animals = AnimalSerializer(many=True)
+#     class Meta:
+#         model = User
+#         fields = '__all__'
+
+class PopulatedUserSerializer(UserSerializer):
+    animals = AnimalSerializer(many=True)
+    comments = CommentSerializer(many=True)

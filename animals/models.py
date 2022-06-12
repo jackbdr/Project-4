@@ -29,6 +29,11 @@ class Animal(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    # favourited_by = models.ManyToManyField(
+    #   'jwt_auth.User',
+    #   related_name='favourite_animals'
+    # )
+
 
     def __str__(self):
         return f"{self.name}"
