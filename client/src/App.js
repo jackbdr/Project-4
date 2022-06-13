@@ -8,6 +8,8 @@ import DisplayMap from "./components/explore/MapPage"
 import AnimalDetail from "./components/animals/AnimalDetail"
 import AnimalAdd from "./components/animals/AnimalAdd"
 import AnimalEdit from "./components/animals/AnimalEdit"
+import Login from "./components/auth/Login"
+import Register from "./components/auth/Register"
 
 
 const App = () => {
@@ -22,6 +24,8 @@ const App = () => {
           <Route path="/animals/:id" element={<AnimalDetail />} />
           <Route path="/animals/add" element={<AnimalAdd />} />
           <Route path="/animals/:id/edit" element={<AnimalEdit />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </main>

@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 
+import { MapAncientStyle } from './MapAncientStyle'
+import { MapModernStyle } from './MapModernStyle'
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFja2JkciIsImEiOiJjbDQ4azk2djMwMm5qM2NtaWF3YTBiOHRqIn0.B_CRBzLyOuY5KAV0quy-Hg'
 
 const DisplayMap = () => {
@@ -9,37 +12,20 @@ const DisplayMap = () => {
   const [lng, setLng] = useState(11.78)
   const [lat, setLat] = useState(28.91)
   const [zoom, setZoom] = useState(1)
+  const [style, setStyle] = useState(MapModernStyle)
+  const [isAncient, setIsAncient] = useState(true)
 
   useEffect(() => {
-    if (map.current) return // initialize map only once
+    if (map.current && style === map.current.style.stylesheet) return // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: {
-        'version': 8,
-        'sources': {
-          'raster-tiles': {
-            'type': 'raster',
-            'tiles': [
-              'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg'
-            ],
-            'tileSize': 256,
-          },
-        },
-        'layers': [
-          {
-            'id': 'simple-tiles',
-            'type': 'raster',
-            'source': 'raster-tiles',
-            'minzoom': 0,
-            'maxzoom': 22,
-          }
-        ],
-      },
+      style: style,
       center: [lng, lat],
       zoom: zoom,
       minZoom: 1,
+      attributionControl: false,
     })
-  })
+  }, [style])
 
   useEffect(() => {
     if (!map.current) return // wait for map to initialize
@@ -50,8 +36,20 @@ const DisplayMap = () => {
     })
   })
 
+  const handleToggle = (e) => {
+    e.preventDefault()
+    if (map.current.style.stylesheet === MapAncientStyle) {
+      setStyle(MapModernStyle)
+    } else {
+      setStyle(MapAncientStyle)
+    }
+    // console.log(style)
+    console.log(map.current.style.stylesheet)
+  }
+
   return (
     <div>
+      <button onClick={handleToggle}>Toggle map</button>
       <div ref={mapContainer} className="map-container" />
     </div>
   )

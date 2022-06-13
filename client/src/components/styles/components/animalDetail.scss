@@ -1,0 +1,30 @@
+.page1 {
+  .page1-animal {
+    height: 100vh;
+    display: flex;
+    img {
+      width: 40%;
+      height: 40%;
+    }
+    .animal-info {
+      .animal-header {
+        display: flex;
+      }
+      .icon-info {
+        display: flex;
+        div {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .icon {
+          width: 25%;
+        }
+      }
+    }
+  }
+  .comments {
+    height: 100vh;
+  }
+}
