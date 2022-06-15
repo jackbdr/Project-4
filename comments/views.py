@@ -38,6 +38,7 @@ class CommentDetailView(APIView):
 
     def delete(self, request, pk):
         comment_to_delete = self.get_comment(pk)
+        print('request.user ->', request.user)
         if comment_to_delete.added_by != request.user:
             print('WE CANT DELETE RECORD')
             raise PermissionDenied()
