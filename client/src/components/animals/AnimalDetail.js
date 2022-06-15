@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+
+import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form'
+
+import { getToken, isUserAuth, isUserOwner, isUserCommentOwner } from '../helpers/Auth'
 
 import Ruler from '../../images/ruler.png'
 import Scales from '../../images/scales.png'
@@ -19,16 +24,37 @@ import DataDef from '../../images/data-def.png'
 
 const AnimalDetail = () => {
 
-  const { id } = useParams()
+  const navigate = useNavigate()
+
+  const { animalId } = useParams()
   const [animal, setAnimal] = useState()
   const [errors, setErrors] = useState(false)
 
+  const [formData, setFormData] = useState({
+    text: '',
+    rating: '',
+    animal: animalId,
+  })
+
   const [page, setPage] = useState(1)
+
+  const [commentShow, setCommentShow] = useState(false)
+  const handleCommentClose = () => {
+    setCommentShow(false)
+    // window.location.reload()
+  }
+  const handleCommentShow = () => setCommentShow(true)
+
+  const [deleteShow, setDeleteShow] = useState(false)
+  const handleDeleteClose = () => {
+    setDeleteShow(false)
+  }
+  const handleDeleteShow = () => setDeleteShow(true)
 
   useEffect(() => {
     const getAnimal = async () => {
       try {
-        const { data } = await axios.get(`/api/animals/${id}`)
+        const { data } = await axios.get(`/api/animals/${animalId}`)
         setAnimal(data)
         console.log(data.comments)
       } catch (err) {
@@ -36,7 +62,7 @@ const AnimalDetail = () => {
       }
     }
     getAnimal()
-  }, [id])
+  }, [animalId])
 
   const handlePage = (e) => {
     e.preventDefault()
@@ -47,6 +73,56 @@ const AnimalDetail = () => {
     if (e.target.className === 'arrow-right' && page === 2) return
     if (e.target.className === 'arrow-right' && page === 1) {
       setPage(2)
+    }
+  }
+
+  const handlePostComment = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.post('/api/comments/', formData, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      window.location.reload()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleDeleteComment = async (e, commentId) => {
+    e.preventDefault()
+    console.log(`Bearer ${getToken()}`)
+    try {
+      await axios.delete(`/api/comments/${commentId}/`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      window.location.reload()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setErrors({ ...errors, [e.target.name]: '' })
+    console.log(e.target.value)
+    console.log('Form data -->', formData)
+  }
+
+  const deleteAnimal = async (e) => {
+    e.preventDefault()
+    try {
+      await axios.delete(`/api/animals/${animalId}/`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      navigate('/map')
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -64,9 +140,40 @@ const AnimalDetail = () => {
                     <h2>{animal.sci_name}</h2>
                     <p>{animal.an_group}</p>
                   </div>
-                  <div className='an-header-right'>
-                    <p>rating/comment/favourite</p>
-                  </div>
+                  {isUserAuth() ?
+                    <div className='an-header-right'>
+                      <button onClick={handleCommentShow}>Add comment</button>
+                      <Modal show={commentShow} onHide={handleCommentClose}>
+                        <Modal.Header closeButton>
+                          <Modal.Title className="comment-title">Impressed? Share your thoughts!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <Form>
+                            <label htmlFor='rating'>WOW rating</label>
+                            <select name='rating' onChange={handleChange}>
+                              <option disabled selected>---</option>
+                              <option value={1}>1 (meh)</option>
+                              <option value={2}>2</option>
+                              <option value={3}>3</option>
+                              <option value={4}>4</option>
+                              <option value={5}>5 (WOW)</option>
+                            </select>
+                            <Form.Group
+                              className="mb-3"
+                              controlId="exampleForm.ControlTextarea1">
+                              <Form.Label>Comment</Form.Label>
+                              <Form.Control as="textarea" rows={3} onChange={handleChange} name='text' />
+                            </Form.Group>
+                          </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <button className='add-comment-btn' onClick={handlePostComment}>Add comment</button>
+                        </Modal.Footer>
+                      </Modal>
+                    </div>
+                    :
+                    <Link to={'/login'} className='detail-login-btn'>Log in to comment!</Link>
+                  }
                 </div>
                 <p className='description'>{animal.description}</p>
                 <div className='icon-info'>
@@ -150,7 +257,21 @@ const AnimalDetail = () => {
                     </div>
                   }
                 </div>
-                <Link to='/map'>View on map</Link>
+                {isUserOwner(animal) &&
+                  <div className='owner-buttons'>
+                    <button className='delete-btn' onClick={handleDeleteShow}>Delete</button>
+                    <Link className='edit-btn' to={`/animals/${animal.id}/edit`}>Edit Animal</Link>
+                    <Modal show={deleteShow} onHide={handleDeleteClose}>
+                      <Modal.Header closeButton></Modal.Header>
+                      <Modal.Body>
+                        Are you sure you want to delete your animal?
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <button className='delete-btn' onClick={deleteAnimal}>Delete animal</button>
+                      </Modal.Footer>
+                    </Modal>
+                  </div>
+                }
               </div>
             </div>
             <div className='arrow-buttons'>
@@ -161,12 +282,21 @@ const AnimalDetail = () => {
           <section className='comments'>
             {animal.comments.map(comment => {
               return (
-                <div className='comment' key={comment.id}>
-                  <div className='comment-header'>
-                    <h4>{comment.added_by.username}</h4>
+                !isUserCommentOwner(comment) ?
+                  <div className='comment' key={comment.id}>
+                    <div className='comment-header'>
+                      <h4>{comment.added_by.username}</h4>
+                    </div>
+                    <p>{comment.text}</p>
                   </div>
-                  <p>{comment.text}</p>
-                </div>
+                  :
+                  <div className='comment' key={comment.id}>
+                    <div className='comment-header'>
+                      <h4>{comment.added_by.username}</h4>
+                    </div>
+                    <p>{comment.text}</p>
+                    <button className='delete-comment-btn' onClick={(e) => handleDeleteComment(e, comment.id)}></button>
+                  </div>
               )
             })}
           </section>

@@ -4,6 +4,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  filter: brightness(95%);
   .home-text {
     // float: right;
     // margin-right: 10%;
@@ -11,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 18%;
+    padding-top: 15%;
     padding-right: 10%;
     .title {
       display: flex;
@@ -19,11 +20,15 @@
       align-items: center;
       h1 {
         margin: 0;
-        font-family: "Oi", cursive;
-        font-size: 400%;
-        letter-spacing: 7px;
-        // color: #fc94af;
-        color: #EEA47FFF;
+        margin-bottom: 1.5%;
+        // font-family: 'Oi', cursive;
+        // font-family: 'Londrina Shadow', cursive;
+        font-family: 'Londrina Solid', cursive;
+        font-size: 550%;
+        letter-spacing: 5px;
+        // color: #a23b5a;
+        color: #742a40;
+        // color: black;
         font-weight: 250;
         box-sizing: 0;
         cursor: default;
@@ -35,16 +40,29 @@
       h1:hover {
         letter-spacing: 10px;
         color: beige;
+        font-family: 'Londrina Solid', cursive;
+        color: #a23b5a
         // font-size: 5.05em;
       }
     }
     .intro {
+      margin-bottom: 5%;
+      max-width: 60%;
       h2 {
         cursor: default;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
         transition: all 1s ease;
+        font-family:'Courier New', Courier, monospace;
+        text-align: center;
+        .changed-by-other {
+          -webkit-transition: all 1s ease;
+          -moz-transition: all 1s ease;
+          -o-transition: all 1s ease;
+          transition: all 1s ease;
+          font-family:'Courier New', Courier, monospace
+        }
       }
     }
     .home-btns {
@@ -53,13 +71,37 @@
       width: 100%;
       .explore-btn {
         text-decoration: none;
-        margin-right: 2%;
+        margin-right: 5%;
       }
       .login-btn {
         text-decoration: none;
-        margin-left: 2%;
+        margin-left: 5%;
+      }
+      .home-btn {
+        // color: #AA336A;
+        color: #742a40;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+      }
+      h3 {
+        font-size: 300%;
       }
     }
 
   }
+}
+
+.intro-text:hover .changed-by-other {
+  letter-spacing: 2px;
+  font-size: 107%;
+  // color: #AA336A;
+  // color: #a23b5a;
+}
+
+.home-btn:hover {
+  letter-spacing: 7px;
+  font-size: 120%;
+  color: #a23b5a;
 }

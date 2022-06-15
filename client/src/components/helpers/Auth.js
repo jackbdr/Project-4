@@ -18,10 +18,16 @@ export const isUserAuth = () => {
   return payLoad.exp > currentTime
 }
 
-export const isUserOwner = (plant) => {
+export const isUserOwner = (animal) => {
   const payLoad = getPayLoad()
   if (!payLoad) return
   // console.log(payLoad.sub)
   // console.log(bread.addedBy._id)
-  return plant.addedBy._id === payLoad.sub
+  return animal.added_by.id === payLoad.sub
+}
+
+export const isUserCommentOwner = (comment) => {
+  const payLoad = getPayLoad()
+  if (!payLoad) return 
+  return comment.added_by.id === payLoad.sub
 }

@@ -14,7 +14,7 @@ const Home = () => {
           {/* <h1></h1> */}
         </div>
         <div className='intro'>
-          <h2>Search and discover all the strangest animals the Earth has to offer.</h2>
+          <h2 className='intro-text'><span className='changed-by-other'>Search</span> and <span className='changed-by-other'>discover</span> all the strangest animals the Earth has to offer.</h2>
         </div>
         <div className='home-btns'>
           <Link className='explore-btn home-btn' to={'/map'}><h3>Explore</h3></Link>

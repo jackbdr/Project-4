@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 import { Route, Routes, BrowserRouter } from "react-router-dom"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Home from "./components/Home"
 import NavBar from "./components/common/NavBar"
@@ -15,15 +15,26 @@ import Register from "./components/auth/Register"
 
 const App = () => {
 
+  console.log(window.location.href)
+  console.log('pathname -> ', location.pathname)
+
+  const [userLocation, setUserLocation] = useState('/')
+
+  useEffect(() => {
+    setUserLocation(location.pathname)
+  }, [userLocation])
+
   return (
     <main className="site-wrapper">
       <BrowserRouter>
+        {/* {userLocation !== '/' &&  */}
         <NavBar />
+        {/* } */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<DisplayMap />} />
           <Route path="/animals" element={<AnimalsAll />} />
-          <Route path="/animals/:id" element={<AnimalDetail />} />
+          <Route path="/animals/:animalId" element={<AnimalDetail />} />
           <Route path="/animals/add" element={<AnimalAdd />} />
           <Route path="/animals/:id/edit" element={<AnimalEdit />} />
           <Route path="/login" element={<Login />} />
