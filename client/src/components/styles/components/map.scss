@@ -6,12 +6,57 @@
 //   border-radius: 5px;
 // }
 
-.mapboxgl-map {
-  height: 500px !important
+// .map-and-buttons {
+//   width: 70%;
+//   height: 50%;
+// }
+
+// .map-container {
+//   max-width: 700px;
+//   height: 500px;
+//   position: absolute;
+//   margin: 0 auto;
+//   top: 0;
+//   left: 0;
+// }
+
+.map-page-container {
+  background-color: beige;
+  height: 100vh;
 }
 
+.map-container {
+  // margin-top: 50px;
+}
 
+.map-buttons {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
 
-// .popup-img {
-//   // width: 100%
+.mapboxgl-map {
+  height: 600px !important;
+  width: 70% !important;
+  margin: 0 auto;
+  border-radius: 5px;
+  // width: 1000px !important;
+  // position: relative;
+}
+
+// .map {
+//   height: 500px !important;
 // }
+
+.marker-img {
+  max-width: 20px;
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  .popup-img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+}

@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom"
 import React from 'react'
 
 import Home from "./components/Home"
+import NavBar from "./components/common/NavBar"
 import AnimalsAll from "./components/animals/AnimalsAll"
 import DisplayMap from "./components/explore/MapPage"
 import AnimalDetail from "./components/animals/AnimalDetail"
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <main className="site-wrapper">
       <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<DisplayMap />} />

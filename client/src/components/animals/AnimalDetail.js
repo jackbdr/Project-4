@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
-// import Ruler from '../../../public/images/ruler.png'
+
+import Ruler from '../../images/ruler.png'
+import Scales from '../../images/scales.png'
+import Home from '../../images/home-icon.png'
+import KnifeFork from '../../images/knife-fork.png'
+import Lifespan from '../../images/lifespan.png'
+import Extinct from '../../images/extinct.png'
+import ExtinctWild from '../../images/extinct-wild.png'
+import CritEndang from '../../images/critically-endangered.png'
+import Endangered from '../../images/endangered.png'
+import Vulnerable from '../../images/vulnerable.png'
+import NearThreat from '../../images/near-threatened.png'
+import LeastConcern from '../../images/least-concern.png'
+import DataDef from '../../images/data-def.png'
+
 
 const AnimalDetail = () => {
 
@@ -58,7 +72,7 @@ const AnimalDetail = () => {
                 <div className='icon-info'>
                   {animal.height || animal.length &&
                     <div className='size'>
-                      <img className='icon' src='/images/ruler.png' alt='ruler' />
+                      <img className='icon' src={Ruler} alt='ruler' />
                       {animal.height &&
                         <p>{animal.height} (height)</p>
                       }
@@ -69,69 +83,69 @@ const AnimalDetail = () => {
                   }
                   {animal.avg_weight &&
                     <div className='weight'>
-                      <img className='icon' src='/images/scales.png' alt='scales' />
+                      <img className='icon' src={Scales} alt='scales' />
                       <p>~{animal.avg_weight} kg</p>
                     </div>
                   }
                   <div className='habitat'>
-                    <img className='icon' src='/images/home-icon.png' alt='house' />
+                    <img className='icon' src={Home} alt='house' />
                     <p>{animal.habitat}</p>
                   </div>
                   <div className='diet'>
-                    <img className='icon' src='/images/knife-fork.png' alt='knife-fork' />
+                    <img className='icon' src={KnifeFork} alt='knife-fork' />
                     <p>{animal.diet}</p>
                   </div>
                   {animal.life_span &&
                     <div className='lifespan'>
-                      <img className='icon' src='/images/lifespan.png' alt='lifespan-icon' />
+                      <img className='icon' src={Lifespan} alt='lifespan-icon' />
                       <p>{animal.life_span}</p>
                     </div>
                   }
                   {animal.con_status === 1 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/extinct.png' />
+                      <img className='icon' src={Extinct} />
                       <p>Extinct</p>
                     </div>
                   }
                   {animal.con_status === 2 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/extinct-wild.png' />
+                      <img className='icon' src={ExtinctWild} />
                       <p>Extinct in the wild</p>
                     </div>
                   }
                   {animal.con_status === 3 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/critically-endangered.png' />
+                      <img className='icon' src={CritEndang} />
                       <p>Critically Endangered</p>
                     </div>
                   }
                   {animal.con_status === 4 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/endangered.png' />
+                      <img className='icon' src={Endangered} />
                       <p>Endangered</p>
                     </div>
                   }
                   {animal.con_status === 5 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/vulnerable.png' />
+                      <img className='icon' src={Vulnerable} />
                       <p>Vulnerable</p>
                     </div>
                   }
                   {animal.con_status === 6 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/near-threatened.png' />
+                      <img className='icon' src={NearThreat} />
                       <p>Near Threatened</p>
                     </div>
                   }
                   {animal.con_status === 7 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/least-concern.png' />
+                      <img className='icon' src={LeastConcern} />
                       <p>Least Concern</p>
                     </div>
                   }
                   {animal.con_status === 8 &&
                     <div className='con-status'>
-                      <img className='icon' src='/images/data-def.png' />
+                      <img className='icon' src={DataDef} />
                       <p>Data Deficient</p>
                     </div>
                   }
