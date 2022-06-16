@@ -1,13 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import ReactMapGL, { Marker, Source, Layer, Popup } from 'react-map-gl'
+import { Link, useNavigate } from 'react-router-dom'
+import ReactMapGL, { Marker, Source, Layer, Popup, attributionControl } from 'react-map-gl'
 
 import { MapAncientStyle } from './MapAncientStyle'
+
+import { isUserAuth } from '../helpers/Auth'
 
 import Pin from '../../images/pinkpin.png'
 
 const DisplayMap = () => {
+
+  const navigate = useNavigate()
 
   const [style, setStyle] = useState(MapAncientStyle)
   const [animals, setAnimals] = useState([])
@@ -18,6 +22,10 @@ const DisplayMap = () => {
   const accessToken = 'pk.eyJ1IjoiamFja2JkciIsImEiOiJjbDQ4azk2djMwMm5qM2NtaWF3YTBiOHRqIn0.B_CRBzLyOuY5KAV0quy-Hg'
   const MapModernStyle = 'mapbox://styles/jackbdr/cl4cypbf6000t15mk3jy6tx18'
 
+  const handleLogout = () => {
+    window.localStorage.removeItem('WOE-user-token')
+    navigate('/')
+  }
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -60,11 +68,11 @@ const DisplayMap = () => {
 
   const handleButtons = (e) => {
     e.preventDefault()
-    if (e.target.className === 'ancient-button' && style !== MapAncientStyle) {
+    if (e.target.className === 'ancient-button map-btn target' && style !== MapAncientStyle) {
       setStyle(MapAncientStyle)
       setIsAncient(true)
     }
-    if (e.target.className === 'modern-button' && style !== MapModernStyle) {
+    if (e.target.className === 'modern-button map-btn target' && style !== MapModernStyle) {
       setStyle(MapModernStyle)
       setIsAncient(false)
     }
@@ -72,9 +80,10 @@ const DisplayMap = () => {
 
   return (
     <div className='map-page-container'>
+      {/* <Link to='/' className='header-title'><p>What On Earth</p></Link> */}
       <div className='map-buttons'>
-        <button className='ancient-button' onClick={handleButtons}>Ancient</button>
-        <button className='modern-button' onClick={handleButtons}>Modern</button>
+        <button className='ancient-button map-btn target' onClick={handleButtons}>Ancient</button>
+        <button className='modern-button map-btn target' onClick={handleButtons}>Modern</button>
       </div>
       <div className='map-container'>
         <ReactMapGL
@@ -86,6 +95,7 @@ const DisplayMap = () => {
             minZoom: 1,
           }}
           mapStyle={style}
+          attributionControl={false}
           onZoom={(e) => {
             setZoomLevel(e.viewState.zoom)
             // console.log(e.viewState.zoom)
@@ -96,14 +106,15 @@ const DisplayMap = () => {
               const { id, long, lat } = animal
               return (
                 <div key={id} className='marker-popup'>
-                  {zoomLevel > 0 &&
-                    <Marker longitude={long} latitude={lat} popupOff>
+                  {zoomLevel > 3 &&
+                    <Marker className='marker' longitude={long} latitude={lat} popupOff>
                       <img className='marker-img' src={Pin} onClick={() => openPopup(animal, id)} />
                     </Marker>
                   }
                   {(popup && selectedMarker === id) &&
                     <Link to={`/animals/${id}`}>
                       <Popup
+                        className='popup'
                         longitude={long}
                         latitude={lat}
                         onClose={() => setPopup(null)}
@@ -113,9 +124,11 @@ const DisplayMap = () => {
                         // offsetTop={-30}
                         anchor={undefined}
                       >
-                        <div className='popup'>
-                          <img className='popup-img' src={popup.img_1} />
+                        <div className='popup-div'>
+                          <img className='popup-img' src={popup.img_1} alt={`${popup.name}`}/>
+                          <p className='show'>{popup.name === 'Giant Shark' ? 'The Meg' : popup.name}</p>
                         </div>
+                        
                       </Popup>
                     </Link>
                   }
@@ -125,7 +138,14 @@ const DisplayMap = () => {
           }
         </ReactMapGL>
       </div>
-      <Link to={'/animals/add'}>Add Animal</Link>
+      {isUserAuth() ?
+        <Link className='add-animal-btn' to={'/animals/add'}><p>Add Animal</p></Link>
+        :
+        <div className='login-todo'>
+          <p>Log in to add your own animals to the map!</p>
+          <Link className='login-btn map-btn' to={'/login'}><h3>Log in</h3></Link>
+        </div>
+      }
     </div>
   )
 

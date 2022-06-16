@@ -1,0 +1,45 @@
+// .header {
+//   width: 100%;
+//   // background-color: #36454F;
+//   text-align: center;
+//   top: 0;
+//   height: 2.5rem;  
+//   line-height: 5px;
+//   padding-top: 30px;
+//   padding-bottom: 50px;
+//   font-size: 14px;
+  .header-title {
+    text-align: center;
+    top: 0;
+    margin: 0;
+    padding-top: 0.3%;
+    margin-bottom: 1.5%;
+    // font-family: 'Oi', cursive;
+    font-family: 'Londrina Shadow', cursive;
+    // font-family: 'Londrina Solid', cursive;
+    font-size: 150%;
+    letter-spacing: 5px;
+    // color: #a23b5a;
+    // color: #742a40;
+    color: black;
+    font-weight: 250;
+    text-decoration: none;
+    box-sizing: 0;
+    cursor: default;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    p {
+      font-family: 'Londrina Shadow', cursive;
+    }
+  }
+  .header-title:hover {
+    letter-spacing: 7px;
+    color: black;
+    // font-family: 'Londrina Solid', cursive;
+    // color: #a23b5a
+    // font-size: 5.05em;
+    
+  }
+// }

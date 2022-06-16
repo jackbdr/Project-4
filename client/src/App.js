@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom"
 import React, { useEffect, useState } from 'react'
 
 import Home from "./components/Home"
+import Header from "./components/common/Header"
 import NavBar from "./components/common/NavBar"
 import AnimalsAll from "./components/animals/AnimalsAll"
 import DisplayMap from "./components/explore/MapPage"
@@ -28,7 +29,8 @@ const App = () => {
     <main className="site-wrapper">
       <BrowserRouter>
         {/* {userLocation !== '/' &&  */}
-        <NavBar />
+        {/* <NavBar /> */}
+        {/* <Header /> */}
         {/* } */}
         <Routes>
           <Route path="/" element={<Home />} />

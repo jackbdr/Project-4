@@ -1,5 +1,6 @@
 .home-page {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0.085)), url("../../../images/sloth-wallpaper.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0.085)),
+    url("../../../images/sloth-wallpaper.jpg");
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
@@ -12,22 +13,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 15%;
+    padding-top: 12.5%;
     padding-right: 10%;
     .title {
       display: flex;
       flex-direction: column;
       align-items: center;
-      h1 {
+      .title-h1 {
         margin: 0;
         margin-bottom: 1.5%;
         // font-family: 'Oi', cursive;
-        // font-family: 'Londrina Shadow', cursive;
-        font-family: 'Londrina Solid', cursive;
-        font-size: 550%;
+        font-family: "Londrina Shadow", cursive;
+        // font-family: 'Londrina Solid', cursive;
+        font-size: 750%;
         letter-spacing: 5px;
         // color: #a23b5a;
-        color: #742a40;
+        // color: #742a40;
         // color: black;
         font-weight: 250;
         box-sizing: 0;
@@ -37,11 +38,11 @@
         -o-transition: all 1s ease;
         transition: all 1s ease;
       }
-      h1:hover {
+      .title-h1:hover {
         letter-spacing: 10px;
-        color: beige;
-        font-family: 'Londrina Solid', cursive;
-        color: #a23b5a
+        // color: beige;
+        // font-family: 'Londrina Solid', cursive;
+        // color: #a23b5a
         // font-size: 5.05em;
       }
     }
@@ -54,14 +55,14 @@
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
         transition: all 1s ease;
-        font-family:'Courier New', Courier, monospace;
+        font-family: "Courier New", Courier, monospace;
         text-align: center;
         .changed-by-other {
           -webkit-transition: all 1s ease;
           -moz-transition: all 1s ease;
           -o-transition: all 1s ease;
           transition: all 1s ease;
-          font-family:'Courier New', Courier, monospace
+          font-family: "Courier New", Courier, monospace;
         }
       }
     }
@@ -72,14 +73,17 @@
       .explore-btn {
         text-decoration: none;
         margin-right: 5%;
+        font-family: "Londrina Solid", cursive;
       }
       .login-btn {
         text-decoration: none;
         margin-left: 5%;
+        font-family: "Londrina Solid", cursive;
       }
       .home-btn {
         // color: #AA336A;
         color: #742a40;
+        color: #FFFDD0;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -o-transition: all 1s ease;
@@ -87,9 +91,9 @@
       }
       h3 {
         font-size: 300%;
+        // font-family: 'Londrina Shadow', cursive;
       }
     }
-
   }
 }
 
@@ -104,4 +108,23 @@
   letter-spacing: 7px;
   font-size: 120%;
   color: #a23b5a;
+}
+
+
+@keyframes popletters {
+  0% {
+    letter-spacing: 5px;
+  }
+  50% {
+    letter-spacing: 7px;
+  }
+  100% {
+    letter-spacing: 5px;
+  }
+}
+
+.title-h1 {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 1.5s ease-out 0s 1 popletters;
+  
 }

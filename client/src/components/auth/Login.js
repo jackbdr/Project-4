@@ -26,7 +26,7 @@ const Login = () => {
       //console.log(data.token)
       console.log({ data })
       // window.localStorage.setItem('WOE-username', data.username)
-      navigate('/')
+      navigate('/map')
     } catch (error) {
       setErrors(true)
     }

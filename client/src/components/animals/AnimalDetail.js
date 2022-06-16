@@ -143,26 +143,28 @@ const AnimalDetail = () => {
                   {isUserAuth() ?
                     <div className='an-header-right'>
                       <button onClick={handleCommentShow}>Add comment</button>
-                      <Modal show={commentShow} onHide={handleCommentClose}>
+                      <Modal className='comment-modal' show={commentShow} onHide={handleCommentClose}>
                         <Modal.Header closeButton>
                           <Modal.Title className="comment-title">Impressed? Share your thoughts!</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                          <Form>
-                            <label htmlFor='rating'>WOW rating</label>
-                            <select name='rating' onChange={handleChange}>
-                              <option disabled selected>---</option>
-                              <option value={1}>1 (meh)</option>
-                              <option value={2}>2</option>
-                              <option value={3}>3</option>
-                              <option value={4}>4</option>
-                              <option value={5}>5 (WOW)</option>
-                            </select>
+                          <Form className='comment-form'>
+                            <div className='wow-rating'>
+                              <label htmlFor='rating'>WOW rating</label>
+                              <select name='rating' onChange={handleChange}>
+                                <option disabled selected>---</option>
+                                <option value={1}>1 (meh)</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5 (WOW)</option>
+                              </select>
+                            </div>
                             <Form.Group
                               className="mb-3"
                               controlId="exampleForm.ControlTextarea1">
-                              <Form.Label>Comment</Form.Label>
-                              <Form.Control as="textarea" rows={3} onChange={handleChange} name='text' />
+                              <Form.Label className='comment-label'>Comment</Form.Label>
+                              <Form.Control className='text-detail' as="textarea" rows={3} onChange={handleChange} name='text' />
                             </Form.Group>
                           </Form>
                         </Modal.Body>
@@ -177,17 +179,15 @@ const AnimalDetail = () => {
                 </div>
                 <p className='description'>{animal.description}</p>
                 <div className='icon-info'>
-                  {animal.height || animal.length &&
-                    <div className='size'>
-                      <img className='icon' src={Ruler} alt='ruler' />
-                      {animal.height &&
-                        <p>{animal.height} (height)</p>
-                      }
-                      {animal.length &&
-                        <p>{animal.length} (length)</p>
-                      }
-                    </div>
-                  }
+                  <div className='size'>
+                    <img className='icon' src={Ruler} alt='ruler' />
+                    {animal.height &&
+                      <p>{animal.height} (height)</p>
+                    }
+                    {animal.length &&
+                      <p>{animal.length} (length)</p>
+                    }
+                  </div>
                   {animal.avg_weight &&
                     <div className='weight'>
                       <img className='icon' src={Scales} alt='scales' />
@@ -261,7 +261,7 @@ const AnimalDetail = () => {
                   <div className='owner-buttons'>
                     <button className='delete-btn' onClick={handleDeleteShow}>Delete</button>
                     <Link className='edit-btn' to={`/animals/${animal.id}/edit`}>Edit Animal</Link>
-                    <Modal show={deleteShow} onHide={handleDeleteClose}>
+                    <Modal className='delete-modal' show={deleteShow} onHide={handleDeleteClose}>
                       <Modal.Header closeButton></Modal.Header>
                       <Modal.Body>
                         Are you sure you want to delete your animal?
@@ -273,10 +273,6 @@ const AnimalDetail = () => {
                   </div>
                 }
               </div>
-            </div>
-            <div className='arrow-buttons'>
-              <button className='arrow-left' onClick={handlePage}></button>
-              <button className='arrow-right' onClick={handlePage}></button>
             </div>
           </section>
           <section className='comments'>

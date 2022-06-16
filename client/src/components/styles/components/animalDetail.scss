@@ -32,42 +32,103 @@
   }
 }
 
-.arrow-buttons {
-  .arrow-left {
-    background-image: url('../../../images/arrow-left.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: white;
-    border: none;
-    padding: 2%;
-    margin-right: 0.5%;
-  }
-  .arrow-right {
-    background-image: url('../../../images/arrow-right.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: white;
-    border: none;
-    padding: 2%;
-    margin-left: 0.5%;
+.comment-modal {
+  .modal-content {
+    border-radius: 20px;
+    border: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    .modal-header {
+      justify-content: center;
+    }
+    .comment-title {
+      text-align: center;
+    }
   }
 }
 
-.modal {
-  width: 100px;
-  height: 100px;
-  margin:0 auto;
-  display:table;
-  position: absolute;
-  left: 0;
-  right:0;
-  top: 50%; 
-  border:1px solid;
-  -webkit-transform:translateY(-50%);
-  -moz-transform:translateY(-50%);
-  -ms-transform:translateY(-50%);
-  -o-transform:translateY(-50%);
-  transform:translateY(-50%);
+.modal-body {
+  .comment-form {
+    .wow-rating {
+      margin-bottom: 4%;
+      display: flex;
+      justify-content: space-between;
+      label {
+        margin-right: 3%;
+      }
+      select {
+        margin-left: 3%;
+      }
+    }
+    .comment-label {
+      margin: 0;
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// .arrow-buttons {
+//   .arrow-left {
+//     background-image: url('../../../images/arrow-left.png');
+//     background-position: center;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-color: white;
+//     border: none;
+//     padding: 2%;
+//     margin-right: 0.5%;
+//   }
+//   .arrow-right {
+//     background-image: url('../../../images/arrow-right.png');
+//     background-position: center;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     background-color: white;
+//     border: none;
+//     padding: 2%;
+//     margin-left: 0.5%;
+//   }
+// }
+
+// .modal {
+//   width: 100px;
+//   height: 100px;
+//   margin:0 auto;
+//   display:table;
+//   position: absolute;
+//   left: 0;
+//   right:0;
+//   top: 50%; 
+//   border:1px solid;
+//   -webkit-transform:translateY(-50%);
+//   -moz-transform:translateY(-50%);
+//   -ms-transform:translateY(-50%);
+//   -o-transform:translateY(-50%);
+//   transform:translateY(-50%);
+// }
+
+// .modal {
+//   text-align: center;
+//   padding: 0!important;
+// }
+// .modal:before {
+//   content: '';
+//   display: inline-block;
+//   height: 100%;
+//   vertical-align: middle;
+//   margin-right: -4px;
+// }
+// .modal-dialog {
+//   display: inline-block;
+//   text-align: left;
+//   vertical-align: middle;
+// }
