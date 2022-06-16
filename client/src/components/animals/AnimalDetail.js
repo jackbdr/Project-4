@@ -152,7 +152,7 @@ const AnimalDetail = () => {
                   </div>
                   {isUserAuth() ?
                     <div className='an-header-right'>
-                      <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p>
+                      {/* <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p> */}
                       <Modal className='comment-modal' show={commentShow} onHide={handleCommentClose}>
                         <Modal.Header closeButton>
                           <Modal.Title className="comment-title">Impressed? Share your thoughts!</Modal.Title>
@@ -288,29 +288,46 @@ const AnimalDetail = () => {
           </div>
         </section>
         <section className='animal-page2'>
-          <h4 className='text-detail'>{animal.fact}</h4>
-          <img src={animal.img_2} />
-        </section>
-        <section className='comments'>
-          {animal.comments.map(comment => {
-            return (
-              !isUserCommentOwner(comment) ?
-                <div className='comment' key={comment.id}>
-                  <div className='comment-header'>
-                    <h4>{comment.added_by.username}</h4>
-                  </div>
-                  <p>{comment.text}</p>
-                </div>
+          <div className='content-page2'>
+            <h4 className='text-detail fact'>{animal.fact}</h4>
+            <img className='img-2' src={animal.img_2} />
+          </div>
+          {/* <div className='arrow-btns2'>
+            <img className='arrow-down-left2' src={Arrow} alt='arrow' />
+            <img className='arrow-down-right2' src={Arrow} alt='arrow' />
+          </div> */}
+          <div className='add-comments'>
+            <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p>
+            <div className='comments'>
+              {animal.comments.length > 0 ?
+                animal.comments.map(comment => {
+                  return (
+                    !isUserCommentOwner(comment) ?
+                      <div className='comment' key={comment.id}>
+                        <div className='comment-header'>
+                          <h4>{comment.added_by.username}</h4>
+                          <h4 className='user-rating'>WOW rating {comment.rating}</h4>
+                        </div>
+                        <p className='text-detail'>{comment.text}</p>
+                      </div>
+                      :
+                      <div className='comment' key={comment.id}>
+                        <div className='comment-header'>
+                          <h4>{comment.added_by.username}</h4>
+                          <h4 className='user-rating'>WOW rating {comment.rating}</h4>
+                        </div>
+                        <div className='comment-with-delete'>
+                          <p className='text-detail'>{comment.text}</p>
+                          <p className='delete-comment-btn' onClick={(e) => handleDeleteComment(e, comment.id)}>Delete</p>
+                        </div>
+                      </div>
+                  )
+                })
                 :
-                <div className='comment' key={comment.id}>
-                  <div className='comment-header'>
-                    <h4>{comment.added_by.username}</h4>
-                  </div>
-                  <p>{comment.text}</p>
-                  <button className='delete-comment-btn' onClick={(e) => handleDeleteComment(e, comment.id)}></button>
-                </div>
-            )
-          })}
+                <h5>No comments yet!</h5>
+              }
+            </div>
+          </div>
         </section>
       </section>
       :
@@ -322,3 +339,5 @@ const AnimalDetail = () => {
 }
 
 export default AnimalDetail
+
+
