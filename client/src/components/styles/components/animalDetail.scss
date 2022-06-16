@@ -1,61 +1,116 @@
 .all-pages {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0.085)), url('../../../images/pink-mountains.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.085), rgba(0, 0, 0, 0.085)),
+    url("../../../images/pink-mountains.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   .animal-page1 {
     height: 100vh;
-    display: flex;
-    .animal-wrapper {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      .img-1 {
-        // width: 100%;
-        // height: 100%;
-        max-width: 40%;
-        max-height: 65vh;
-        min-width: 28%;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-      }
-      .animal-info {
-        width: 50%;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        padding: 3%;
-        background-color: #f6efe2;
-        .animal-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+    .page1-no-nav {
+      margin-top: 7%;
+      .animal-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .img-1 {
+          // width: 100%;
+          // height: 100%;
+          max-width: 40%;
+          max-height: 65vh;
+          min-width: 28%;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          border-radius: 5px;
         }
-        .icon-info {
-          display: flex;
-          div {
-            width: 50%;
-            // display: flex;
-            // flex-direction: column;
-            // align-items: center;
-            // justify-content: space-evenly;
-          }
-          .icon {
-            width: 23%;
-          }
-          .category {
-            text-align: center;
-            img {
-              height: 40%;
-              width: 40%;
+        .animal-info {
+          width: 50%;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          border-radius: 5px;
+          padding: 3%;
+          background-color: #f6efe2;
+          .animal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .add-comment-btn {
+              color: #355e3b;
+              cursor: pointer;
+              -webkit-transition: all 1s ease;
+              -moz-transition: all 1s ease;
+              -o-transition: all 1s ease;
+              transition: all 1s ease;
             }
-            p {
-              font-size: 80%;
-              margin-top: 5%;
+            .add-comment-btn:hover {
+              letter-spacing: 1.5px;
+            }
+          }
+          .icon-info {
+            display: flex;
+            div {
+              width: 50%;
+              // display: flex;
+              // flex-direction: column;
+              // align-items: center;
+              // justify-content: space-evenly;
+            }
+            .icon {
+              width: 23%;
+            }
+            .category {
+              text-align: center;
+              img {
+                height: 40%;
+                width: 40%;
+              }
+              p {
+                font-size: 80%;
+                margin-top: 5%;
+              }
+            }
+          }
+          .owner-buttons {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            .edit-btn {
+              margin-right: 1.5%;
+              text-decoration: none;
+              font-family: "Courier New", Courier, monospace;
+              color: #355e3b;
+              font-weight: 600;
+              -webkit-transition: all 1s ease;
+              -moz-transition: all 1s ease;
+              -o-transition: all 1s ease;
+              transition: all 1s ease;
+            }
+            .edit-btn:hover {
+              letter-spacing: 2px;
+            }
+            .delete-btn {
+              margin-left: 1.5%;
+              margin-bottom: none !important;
+              border: none;
+              color: darkmagenta;
+              font-family: "Courier New", Courier, monospace;
+              font-weight: 600;
+              background-color: #f6efe2;
+              cursor: pointer;
+              -webkit-transition: all 1s ease;
+              -moz-transition: all 1s ease;
+              -o-transition: all 1s ease;
+              transition: all 1s ease;
+            }
+            .delete-btn:hover {
+              letter-spacing: 2px;
             }
           }
         }
       }
     }
+  }
+  .animal-page2 {
+    height: 100vh;
   }
   .comments {
     height: 100vh;
@@ -66,8 +121,9 @@
   .modal-content {
     border-radius: 20px;
     border: 5px;
-    // background-color: beige;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: #f6efe2;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     .modal-header {
       justify-content: center;
     }
@@ -80,7 +136,7 @@
     justify-content: center;
     .done-comment-btn {
       border: none;
-      background-color: white;
+      background-color: #f6efe2;
       -webkit-transition: all 1s ease;
       -moz-transition: all 1s ease;
       -o-transition: all 1s ease;
@@ -111,16 +167,32 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
+.delete-modal {
+  .modal-content {
+    background-color: #f6efe2;
+    border-radius: 20px;
+    border: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  .delete-btn {
+    margin-left: 1.5%;
+    margin-bottom: none !important;
+    border: none;
+    color: darkmagenta;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+    background-color: #f6efe2;
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .delete-btn:hover {
+    letter-spacing: 2px;
+  }
+}
 
 // .arrow-buttons {
 //   .arrow-left {
@@ -153,7 +225,7 @@
 //   position: absolute;
 //   left: 0;
 //   right:0;
-//   top: 50%; 
+//   top: 50%;
 //   border:1px solid;
 //   -webkit-transform:translateY(-50%);
 //   -moz-transform:translateY(-50%);

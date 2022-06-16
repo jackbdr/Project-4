@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
-  font-family: 'Acme', sans-serif;
+  // font-family: 'Acme', sans-serif;
+  font-family: "Londrina Solid", cursive;
 }
 
 body {
@@ -11,6 +12,69 @@ html {
   margin: 0;
 }
 
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: clip; 
+}
+
 .text-detail {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
+}
+
+
+.div-navbar {
+  padding-top: 1%;
+  padding-left: 1%;
+  .back-to-map {
+    color: black;
+    font-family: "Londrina Solid", cursive;
+    font-size: 130%;
+    text-decoration: none;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .back-to-map:hover {
+    letter-spacing: 3px;
+    // font-size: 150%;
+  }
+  .logout-btn {
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding-top: 1%;
+    padding-right: 2%;
+    font-size: 130%;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .logout-btn:hover {
+    letter-spacing: 3px;
+  }
+}
+
+.arrow-down-left {
+  width: 2%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-left: 0.8%;
+  padding-bottom: 0.8%;
+}
+
+.arrow-down-right {
+  width: 2%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 0.8%;
+  padding-bottom: 0.8%;
 }

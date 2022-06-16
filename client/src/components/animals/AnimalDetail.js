@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form'
 
 import { getToken, isUserAuth, isUserOwner, isUserCommentOwner } from '../helpers/Auth'
 
+import Arrow from '../../images/arrow-down.png'
 import Ruler from '../../images/ruler.png'
 import Scales from '../../images/scales.png'
 import Home from '../../images/home-icon.png'
@@ -25,6 +26,11 @@ import DataDef from '../../images/data-def.png'
 const AnimalDetail = () => {
 
   const navigate = useNavigate()
+
+  const handleLogout = () => {
+    window.localStorage.removeItem('WOE-user-token')
+    navigate('/')
+  }
 
   const { animalId } = useParams()
   const [animal, setAnimal] = useState()
@@ -64,17 +70,17 @@ const AnimalDetail = () => {
     getAnimal()
   }, [animalId])
 
-  const handlePage = (e) => {
-    e.preventDefault()
-    if (e.target.className === 'arrow-left' && page === 1) return
-    if (e.target.className === 'arrow-left' && page === 2) {
-      setPage(1)
-    }
-    if (e.target.className === 'arrow-right' && page === 2) return
-    if (e.target.className === 'arrow-right' && page === 1) {
-      setPage(2)
-    }
-  }
+  // const handlePage = (e) => {
+  //   e.preventDefault()
+  //   if (e.target.className === 'arrow-left' && page === 1) return
+  //   if (e.target.className === 'arrow-left' && page === 2) {
+  //     setPage(1)
+  //   }
+  //   if (e.target.className === 'arrow-right' && page === 2) return
+  //   if (e.target.className === 'arrow-right' && page === 1) {
+  //     setPage(2)
+  //   }
+  // }
 
   const handlePostComment = async (e) => {
     e.preventDefault()
@@ -130,150 +136,158 @@ const AnimalDetail = () => {
     <>{animal ?
       <section className='all-pages'>
         <section className='animal-page1'>
-          <div className='animal-wrapper'>
-            <img className='img-1' src={animal.img_1} />
-            <div className='animal-info'>
-              <div className='animal-header'>
-                <div className='an-header-left'>
-                  <h1>{animal.name === 'Giant Shark' ? 'The Meg' : animal.name}</h1>
-                  <h2>{animal.sci_name}</h2>
-                  <p>{animal.an_group}</p>
+          <div className='div-navbar'>
+            <Link className='back-to-map' to={'/map'}>Back to map</Link>
+            <p className='logout-btn' onClick={handleLogout}>Log out</p>
+          </div>
+          <div className='page1-no-nav'>
+            <div className='animal-wrapper'>
+              <img className='img-1' src={animal.img_1} />
+              <div className='animal-info'>
+                <div className='animal-header'>
+                  <div className='an-header-left'>
+                    <h1>{animal.name === 'Giant Shark' ? 'The Meg' : animal.name}</h1>
+                    <h4>{animal.sci_name}</h4>
+                    <p>{animal.an_group}</p>
+                  </div>
+                  {isUserAuth() ?
+                    <div className='an-header-right'>
+                      <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p>
+                      <Modal className='comment-modal' show={commentShow} onHide={handleCommentClose}>
+                        <Modal.Header closeButton>
+                          <Modal.Title className="comment-title">Impressed? Share your thoughts!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <Form className='comment-form'>
+                            <div className='wow-rating'>
+                              <label htmlFor='rating'>WOW rating</label>
+                              <select name='rating' onChange={handleChange}>
+                                <option disabled selected>---</option>
+                                <option value={1}>1 (meh)</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5 (WOW)</option>
+                              </select>
+                            </div>
+                            <Form.Group
+                              className="mb-3"
+                              controlId="exampleForm.ControlTextarea1">
+                              <Form.Label className='comment-label'>Comment</Form.Label>
+                              <Form.Control className='text-detail' as="textarea" rows={3} onChange={handleChange} name='text' />
+                            </Form.Group>
+                          </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <button className='done-comment-btn' onClick={handlePostComment}>DONE</button>
+                        </Modal.Footer>
+                      </Modal>
+                    </div>
+                    :
+                    <Link to={'/login'} className='detail-login-btn'>Log in to comment!</Link>
+                  }
                 </div>
-                {isUserAuth() ?
-                  <div className='an-header-right'>
-                    <button className='add-comment-btn' onClick={handleCommentShow}>Add comment</button>
-                    <Modal className='comment-modal' show={commentShow} onHide={handleCommentClose}>
-                      <Modal.Header closeButton>
-                        <Modal.Title className="comment-title">Impressed? Share your thoughts!</Modal.Title>
-                      </Modal.Header>
+                <p className='description text-detail'>{animal.description}</p>
+                <div className='icon-info'>
+                  <div className='size category'>
+                    <img className='icon' src={Ruler} alt='ruler' />
+                    {animal.height ?
+                      <p className='text-detail'>{animal.height} (height)</p>
+                      :
+                      <p className='text-detail'>{animal.length} (length)</p>
+                    }
+                  </div>
+                  {animal.avg_weight &&
+                    <div className='weight category'>
+                      <img className='icon' src={Scales} alt='scales' />
+                      <p className='text-detail'>~{animal.avg_weight} kg</p>
+                    </div>
+                  }
+                  <div className='habitat category'>
+                    <img className='icon' src={Home} alt='house' />
+                    <p className='text-detail'>{animal.habitat}</p>
+                  </div>
+                  <div className='diet category'>
+                    <img className='icon' src={KnifeFork} alt='knife-fork' />
+                    <p className='text-detail'>{animal.diet}</p>
+                  </div>
+                  {animal.life_span &&
+                    <div className='lifespan category'>
+                      <img className='icon' src={Lifespan} alt='lifespan-icon' />
+                      <p className='text-detail'>{animal.life_span}</p>
+                    </div>
+                  }
+                  {animal.con_status === 1 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={Extinct} />
+                      <p className='text-detail'>Extinct</p>
+                    </div>
+                  }
+                  {animal.con_status === 2 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={ExtinctWild} />
+                      <p className='text-detail'>Extinct in the wild</p>
+                    </div>
+                  }
+                  {animal.con_status === 3 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={CritEndang} />
+                      <p className='text-detail'>Critically Endangered</p>
+                    </div>
+                  }
+                  {animal.con_status === 4 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={Endangered} />
+                      <p className='text-detail'>Endangered</p>
+                    </div>
+                  }
+                  {animal.con_status === 5 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={Vulnerable} />
+                      <p className='text-detail'>Vulnerable</p>
+                    </div>
+                  }
+                  {animal.con_status === 6 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={NearThreat} />
+                      <p className='text-detail'>Near Threatened</p>
+                    </div>
+                  }
+                  {animal.con_status === 7 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={LeastConcern} />
+                      <p className='text-detail'>Least Concern</p>
+                    </div>
+                  }
+                  {animal.con_status === 8 &&
+                    <div className='con-status category'>
+                      <img className='icon' src={DataDef} />
+                      <p className='text-detail'>Data Deficient</p>
+                    </div>
+                  }
+                </div>
+                {(isUserOwner(animal) && isUserAuth()) &&
+                  <div className='owner-buttons'>
+                    <Link className='edit-btn' to={`/animals/${animal.id}/edit`}>Edit</Link>
+                    <button className='delete-btn' onClick={handleDeleteShow}>Delete</button>
+                    <Modal className='delete-modal' show={deleteShow} onHide={handleDeleteClose}>
+                      <Modal.Header closeButton></Modal.Header>
                       <Modal.Body>
-                        <Form className='comment-form'>
-                          <div className='wow-rating'>
-                            <label htmlFor='rating'>WOW rating</label>
-                            <select name='rating' onChange={handleChange}>
-                              <option disabled selected>---</option>
-                              <option value={1}>1 (meh)</option>
-                              <option value={2}>2</option>
-                              <option value={3}>3</option>
-                              <option value={4}>4</option>
-                              <option value={5}>5 (WOW)</option>
-                            </select>
-                          </div>
-                          <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1">
-                            <Form.Label className='comment-label'>Comment</Form.Label>
-                            <Form.Control className='text-detail' as="textarea" rows={3} onChange={handleChange} name='text' />
-                          </Form.Group>
-                        </Form>
+                        Are you sure you want to delete your animal?
                       </Modal.Body>
                       <Modal.Footer>
-                        <button className='done-comment-btn' onClick={handlePostComment}>DONE</button>
+                        <button className='delete-btn' onClick={deleteAnimal}>Delete</button>
                       </Modal.Footer>
                     </Modal>
                   </div>
-                  :
-                  <Link to={'/login'} className='detail-login-btn'>Log in to comment!</Link>
                 }
               </div>
-              <p className='description text-detail'>{animal.description}</p>
-              <div className='icon-info'>
-                <div className='size category'>
-                  <img className='icon' src={Ruler} alt='ruler' />
-                  {animal.height ?
-                    <p className='text-detail'>{animal.height} (height)</p>
-                    :
-                    <p className='text-detail'>{animal.length} (length)</p>
-                  }
-                </div>
-                {animal.avg_weight &&
-                  <div className='weight category'>
-                    <img className='icon' src={Scales} alt='scales' />
-                    <p className='text-detail'>~{animal.avg_weight} kg</p>
-                  </div>
-                }
-                <div className='habitat category'>
-                  <img className='icon' src={Home} alt='house' />
-                  <p className='text-detail'>{animal.habitat}</p>
-                </div>
-                <div className='diet category'>
-                  <img className='icon' src={KnifeFork} alt='knife-fork' />
-                  <p className='text-detail'>{animal.diet}</p>
-                </div>
-                {animal.life_span &&
-                  <div className='lifespan category'>
-                    <img className='icon' src={Lifespan} alt='lifespan-icon' />
-                    <p className='text-detail'>{animal.life_span}</p>
-                  </div>
-                }
-                {animal.con_status === 1 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={Extinct} />
-                    <p className='text-detail'>Extinct</p>
-                  </div>
-                }
-                {animal.con_status === 2 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={ExtinctWild} />
-                    <p className='text-detail'>Extinct in the wild</p>
-                  </div>
-                }
-                {animal.con_status === 3 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={CritEndang} />
-                    <p className='text-detail'>Critically Endangered</p>
-                  </div>
-                }
-                {animal.con_status === 4 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={Endangered} />
-                    <p className='text-detail'>Endangered</p>
-                  </div>
-                }
-                {animal.con_status === 5 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={Vulnerable} />
-                    <p className='text-detail'>Vulnerable</p>
-                  </div>
-                }
-                {animal.con_status === 6 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={NearThreat} />
-                    <p className='text-detail'>Near Threatened</p>
-                  </div>
-                }
-                {animal.con_status === 7 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={LeastConcern} />
-                    <p className='text-detail'>Least Concern</p>
-                  </div>
-                }
-                {animal.con_status === 8 &&
-                  <div className='con-status category'>
-                    <img className='icon' src={DataDef} />
-                    <p className='text-detail'>Data Deficient</p>
-                  </div>
-                }
-              </div>
-              {isUserOwner(animal) &&
-                <div className='owner-buttons'>
-                  <button className='delete-btn' onClick={handleDeleteShow}>Delete</button>
-                  <Link className='edit-btn' to={`/animals/${animal.id}/edit`}>Edit Animal</Link>
-                  <Modal className='delete-modal' show={deleteShow} onHide={handleDeleteClose}>
-                    <Modal.Header closeButton></Modal.Header>
-                    <Modal.Body>
-                      Are you sure you want to delete your animal?
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <button className='delete-btn' onClick={deleteAnimal}>Delete animal</button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              }
             </div>
+            <img className='arrow-down-left' src={Arrow} alt='arrow' />
+            <img className='arrow-down-right' src={Arrow} alt='arrow' />
           </div>
         </section>
-        <section className='page2'>
+        <section className='animal-page2'>
           <h4 className='text-detail'>{animal.fact}</h4>
           <img src={animal.img_2} />
         </section>

@@ -81,6 +81,9 @@ const DisplayMap = () => {
   return (
     <div className='map-page-container'>
       {/* <Link to='/' className='header-title'><p>What On Earth</p></Link> */}
+      <div className='div-navbar'>
+        <p className='logout-btn' onClick={handleLogout}>Log out</p>
+      </div>
       <div className='map-buttons'>
         <button className='ancient-button map-btn target' onClick={handleButtons}>Ancient</button>
         <button className='modern-button map-btn target' onClick={handleButtons}>Modern</button>
@@ -125,10 +128,10 @@ const DisplayMap = () => {
                         anchor={undefined}
                       >
                         <div className='popup-div'>
-                          <img className='popup-img' src={popup.img_1} alt={`${popup.name}`}/>
+                          <img className='popup-img' src={popup.img_1} alt={`${popup.name}`} />
                           <p className='show'>{popup.name === 'Giant Shark' ? 'The Meg' : popup.name}</p>
                         </div>
-                        
+
                       </Popup>
                     </Link>
                   }
