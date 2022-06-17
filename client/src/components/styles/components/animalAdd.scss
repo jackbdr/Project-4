@@ -1,0 +1,138 @@
+.add-animal-page {
+  height: 100vh;
+  // background-color: beige;
+  background-image: url('../../../images/axolotl.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .div-navbar-add {
+    padding-top: 1%;
+    padding-left: 1%;
+    .back-to-map-add {
+      color: #f6efe2;
+      font-family: "Londrina Solid", cursive;
+      font-size: 130%;
+      text-decoration: none;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+    .back-to-map-add:hover {
+      letter-spacing: 3px;
+      // font-size: 150%;
+    }
+    .logout-btn-add {
+      color: #f6efe2;
+      top: 0;
+      right: 0;
+      position: absolute;
+      padding-top: 1%;
+      padding-right: 2%;
+      font-size: 130%;
+      text-decoration: none;
+      cursor: pointer;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+    .logout-btn-add:hover {
+      letter-spacing: 3px;
+    }
+  }
+  .form-no-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    .add-animal-form {
+      background-color: beige;
+      padding: 2%;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      .form-step {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        .form-content {
+          input {
+            font-family: "Courier New", Courier, monospace;
+          }
+          textarea {
+            font-family: "Courier New", Courier, monospace;
+          }
+        }
+      }
+    } 
+  }
+}
+
+.multi-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.next-btn-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 3%;
+  p {
+    margin: 0;
+  }
+  .next-btn {
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .next-btn:hover {
+    letter-spacing: 2px;
+  }
+}
+
+.add-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4%;
+  p {
+    margin: 0;
+  }
+  .back-btn {
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .back-btn:hover {
+    letter-spacing: 2px;
+  }
+  .next-btn {
+    cursor: pointer;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .next-btn:hover {
+    letter-spacing: 2px;
+  }
+}
+
+.submit-btn {
+  border: none;
+  background-color: beige;
+  cursor: pointer;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.submit-btn:hover {
+  letter-spacing: 2px;
+}
+
+

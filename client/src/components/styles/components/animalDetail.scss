@@ -101,7 +101,7 @@
     }
   }
   .animal-page2 {
-    height: 130vh;
+    height: 125vh;
     .content-page2 {
       display: flex;
       align-items: center;
@@ -245,6 +245,7 @@
   margin-top: 6%;
   .add-comment-btn {
     // color: #355e3b;
+    text-decoration: none;
     color: black;
     cursor: pointer;
     -webkit-transition: all 1s ease;

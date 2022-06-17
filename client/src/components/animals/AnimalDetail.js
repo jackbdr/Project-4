@@ -138,7 +138,9 @@ const AnimalDetail = () => {
         <section className='animal-page1'>
           <div className='div-navbar'>
             <Link className='back-to-map' to={'/map'}>Back to map</Link>
-            <p className='logout-btn' onClick={handleLogout}>Log out</p>
+            {isUserAuth() &&
+              <p className='logout-btn' onClick={handleLogout}>Log out</p>
+            }
           </div>
           <div className='page1-no-nav'>
             <div className='animal-wrapper'>
@@ -150,7 +152,7 @@ const AnimalDetail = () => {
                     <h4>{animal.sci_name}</h4>
                     <p>{animal.an_group}</p>
                   </div>
-                  {isUserAuth() ?
+                  {isUserAuth() &&
                     <div className='an-header-right'>
                       {/* <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p> */}
                       <Modal className='comment-modal' show={commentShow} onHide={handleCommentClose}>
@@ -183,8 +185,6 @@ const AnimalDetail = () => {
                         </Modal.Footer>
                       </Modal>
                     </div>
-                    :
-                    <Link to={'/login'} className='detail-login-btn'>Log in to comment!</Link>
                   }
                 </div>
                 <p className='description text-detail'>{animal.description}</p>
@@ -297,7 +297,11 @@ const AnimalDetail = () => {
             <img className='arrow-down-right2' src={Arrow} alt='arrow' />
           </div> */}
           <div className='add-comments'>
-            <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p>
+            {isUserAuth() ?
+              <p className='add-comment-btn' onClick={handleCommentShow}>Add comment</p>
+              :
+              <Link className='add-comment-btn' to={'/login'}>Log in to comment!</Link>
+            }
             <div className='comments'>
               {animal.comments.length > 0 ?
                 animal.comments.map(comment => {

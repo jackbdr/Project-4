@@ -82,7 +82,10 @@ const DisplayMap = () => {
     <div className='map-page-container'>
       {/* <Link to='/' className='header-title'><p>What On Earth</p></Link> */}
       <div className='div-navbar'>
-        <p className='logout-btn' onClick={handleLogout}>Log out</p>
+        <Link className='back-to-map' to={'/'}>Back to home</Link>
+        {isUserAuth() &&
+          <p className='logout-btn' onClick={handleLogout}>Log out</p>
+        }
       </div>
       <div className='map-buttons'>
         <button className='ancient-button map-btn target' onClick={handleButtons}>Ancient</button>
