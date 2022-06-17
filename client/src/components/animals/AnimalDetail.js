@@ -328,7 +328,7 @@ const AnimalDetail = () => {
                   )
                 })
                 :
-                <h5>No comments yet!</h5>
+                <h5 className='no-comments'>No comments yet!</h5>
               }
             </div>
           </div>

@@ -90,12 +90,12 @@ const DisplayMap = () => {
       {style === MapAncientStyle ?
         <div className='map-buttons'>
           <button className='ancient-button map-btn target map-btn-selected' onClick={handleButtons}>Ancient</button>
-          <button className='modern-button map-btn target' onClick={handleButtons}>Modern</button>
+          <button className='modern-button map-btn target' onClick={handleButtons}>Current</button>
         </div>
         :
         <div className='map-buttons'>
           <button className='ancient-button map-btn target map-btn-not-selected' onClick={handleButtons}>Ancient</button>
-          <button className='modern-button map-btn target map-btn-selected' onClick={handleButtons}>Modern</button>
+          <button className='modern-button map-btn target map-btn-selected' onClick={handleButtons}>Current</button>
         </div>
       }
       <div className='map-container'>

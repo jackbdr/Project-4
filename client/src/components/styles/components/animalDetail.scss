@@ -101,7 +101,7 @@
     }
   }
   .animal-page2 {
-    height: 140vh;
+    height: 150vh;
     .content-page2 {
       display: flex;
       align-items: center;
@@ -253,6 +253,7 @@
     -o-transition: all 1s ease;
     transition: all 1s ease;
     font-size: 150%;
+    margin-bottom: 1%;
   }
   .add-comment-btn:hover {
     letter-spacing: 1.5px;
@@ -264,10 +265,11 @@
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 50%;
     background-color: #f6efe2;
-    max-height: 37vh;
+    height: 37vh;
     overflow: scroll;
     h5 {
       text-align: center;
+      margin-top: 20%;
     }
     .comment {
       .comment-header {
