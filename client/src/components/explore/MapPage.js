@@ -68,7 +68,7 @@ const DisplayMap = () => {
 
   const handleButtons = (e) => {
     e.preventDefault()
-    if (e.target.className === 'ancient-button map-btn target' && style !== MapAncientStyle) {
+    if (e.target.className === 'ancient-button map-btn target map-btn-not-selected' && style !== MapAncientStyle) {
       setStyle(MapAncientStyle)
       setIsAncient(true)
     }
@@ -87,17 +87,24 @@ const DisplayMap = () => {
           <p className='logout-btn' onClick={handleLogout}>Log out</p>
         }
       </div>
-      <div className='map-buttons'>
-        <button className='ancient-button map-btn target' onClick={handleButtons}>Ancient</button>
-        <button className='modern-button map-btn target' onClick={handleButtons}>Modern</button>
-      </div>
+      {style === MapAncientStyle ?
+        <div className='map-buttons'>
+          <button className='ancient-button map-btn target map-btn-selected' onClick={handleButtons}>Ancient</button>
+          <button className='modern-button map-btn target' onClick={handleButtons}>Modern</button>
+        </div>
+        :
+        <div className='map-buttons'>
+          <button className='ancient-button map-btn target map-btn-not-selected' onClick={handleButtons}>Ancient</button>
+          <button className='modern-button map-btn target map-btn-selected' onClick={handleButtons}>Modern</button>
+        </div>
+      }
       <div className='map-container'>
         <ReactMapGL
           mapboxAccessToken={accessToken}
           initialViewState={{
             longitude: 11.87,
             latitude: 28.91,
-            zoom: 1,
+            zoom: 1.2,
             minZoom: 1,
           }}
           mapStyle={style}
@@ -112,11 +119,11 @@ const DisplayMap = () => {
               const { id, long, lat } = animal
               return (
                 <div key={id} className='marker-popup'>
-                  {zoomLevel > 3 &&
-                    <Marker className='marker' longitude={long} latitude={lat} popupOff>
-                      <img className='marker-img' src={Pin} onClick={() => openPopup(animal, id)} />
-                    </Marker>
-                  }
+                  {/* {zoomLevel > 0.9 && */}
+                  <Marker className='marker' longitude={long} latitude={lat} popupOff>
+                    <img className='marker-img' src={Pin} onClick={() => openPopup(animal, id)} />
+                  </Marker>
+                  {/* // } */}
                   {(popup && selectedMarker === id) &&
                     <Link to={`/animals/${id}`}>
                       <Popup

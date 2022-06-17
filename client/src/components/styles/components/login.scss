@@ -1,3 +1,67 @@
 .form-page {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgb(245,245,220, 0), rgb(245,245,220, 1.5));
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: beige;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    .form-detail {
+      background-color: beige;
+      padding: 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .no-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input {
+        font-family: "Courier New", Courier, monospace;
+      }
+      .sign-in-btn {
+        border: none;
+        background-color: beige;
+        margin-top: 4%;
+        font-size: 200%;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+      }
+      .sign-in-btn:hover {
+        letter-spacing: 2px;
+      }
+    }
+    .new-user {
+      background-color: beige;
+      padding: 5%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .sign-up-btn {
+        text-decoration: none;
+        color: black;
+        font-size: 200%;
+        margin-left: 10%;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+      }
+      .sign-up-btn:hover {
+        letter-spacing: 2px;
+        // margin-left: 3%;
+      }
+    }
+  }
 }
+

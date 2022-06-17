@@ -58,7 +58,7 @@
     transition: all 1s ease;
     border: none;
     background-color: transparent;
-    font-size: 180%;
+    font-size: 170%;
   }
   // .map-btn:visited {
   //   letter-spacing: 0px;
@@ -70,10 +70,17 @@
     letter-spacing: 3px;
     font-size: 190%;
   }
+  .map-btn-selected {
+    font-family: "Londrina Solid", cursive;
+    font-size: 210%;
+  }
+  .map-btn-not-selected {
+    font-family: "Londrina Shadow", cursive;;
+  }
   // .map-btn:active {
   //   letter-spacing: 3px;
   // }
-  :target {
+  .modern-button:active {
     letter-spacing: 3px;
   }
 }

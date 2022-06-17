@@ -1,0 +1,26 @@
+.register-form-detail {
+  padding: 3%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 20px;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  input {
+    margin-bottom: 3%;
+    font-family: "Courier New", Courier, monospace;
+  }
+  .register-btn {
+    border: none;
+    background-color: beige;
+    margin-top: 4%;
+    font-size: 200%;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    .register-btn:hover {
+      letter-spacing: 2px;
+    }
+  }
+}

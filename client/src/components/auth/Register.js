@@ -50,9 +50,8 @@ const Register = () => {
           <button>Sign in</button>
         </Link> */}
       </section>
-      <form className='form-detail' onSubmit={handleSubmit}>
+      <form className='register-form-detail' onSubmit={handleSubmit}>
         <h1>Create Account</h1>
-        <hr />
         {/* Username */}
         <label htmlFor='username'></label>
         <input type='text' name='username' className='input' placeholder='Username' value={formData.username} onChange={handleChange} />
@@ -69,7 +68,7 @@ const Register = () => {
         <label htmlFor='password_confirmation'></label>
         <input type='password' name='password_confirmation' className='input' placeholder='Password Confirmation' value={formData.password_confirmation} onChange={handleChange} />
         {/* Submit */}
-        <button type='submit'>Register</button>
+        <button className='register-btn' type='submit'>Register</button>
       </form>
     </section>
   )

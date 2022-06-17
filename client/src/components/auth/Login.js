@@ -41,26 +41,26 @@ const Login = () => {
     <section className='form-page'>
       <div className='content-container'>
         <form className='form-detail' onSubmit={handleSubmit}>
-          <h1>Log In</h1>
-          <hr />
-          {/* Email */}
-          <label htmlFor='email'></label>
-          <input type='email' name='email' className='input' placeholder='Email' value={formData.email} onChange={handleChange} />
-          {/* Password */}
-          <label htmlFor='password'></label>
-          <input type='password' name='password' className='input' placeholder='Password' value={formData.password} onChange={handleChange} />
-          {errors && <p className='denied-text'>Please enter the correct login details</p>}
-          {/* Submit */}
-          <button type='submit'>Sign in</button>
+          <div className='no-button'>
+            <h1>Log In</h1>
+            {/* Email */}
+            <label htmlFor='email'></label>
+            <input type='email' name='email' className='input' placeholder='Email' value={formData.email} onChange={handleChange} />
+            {/* Password */}
+            <label htmlFor='password'></label>
+            <input type='password' name='password' className='input' placeholder='Password' value={formData.password} onChange={handleChange} />
+            {errors && <p className='denied-text'>Please enter the correct login details</p>}
+            {/* Submit */}
+          </div>
+          <button className='sign-in-btn' type='submit'>Enter</button>
         </form>
+        <section className='new-user'>
+          <h6>New here?</h6>
+          <Link className='sign-up-btn' to={'/register'}>
+            <p>Sign up</p>
+          </Link>
+        </section>
       </div>
-      <section className='new-user'>
-        <h1>New here?</h1>
-        <Link to={'/register'}>
-          <button>Sign up</button>
-        </Link>
-
-      </section>
     </section>
   )
 }
