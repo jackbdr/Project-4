@@ -50,11 +50,11 @@ const DisplayMap = () => {
 
 
   useEffect(() => {
-    if (isAncient) {
+    if (isAncient && animals !== []) {
       setFilteredAnimals(animals.filter(animal => {
         return animal.is_ancient
       }))
-    } else if (!isAncient) {
+    } else if (!isAncient && animals !== []) {
       setFilteredAnimals(animals.filter(animal => {
         return !animal.is_ancient
       }))
