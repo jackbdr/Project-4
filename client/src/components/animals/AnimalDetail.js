@@ -60,7 +60,7 @@ const AnimalDetail = () => {
   useEffect(() => {
     const getAnimal = async () => {
       try {
-        const { data } = await axios.get(`/api/animals/${animalId}`)
+        const { data } = await axios.get(`/api/animals/${animalId}/`)
         setAnimal(data)
         console.log(data.comments)
       } catch (err) {
