@@ -41,19 +41,23 @@ const DisplayMap = () => {
     getAnimals()
   }, [])
 
-  const ancientAnimals = animals.filter(animal => {
-    return animal.is_ancient
-  })
-  const modernAnimals = animals.filter(animal => {
-    return !animal.is_ancient
-  })
+  // const ancientAnimals = animals.filter(animal => {
+  //   return animal.is_ancient
+  // })
+  // const modernAnimals = animals.filter(animal => {
+  //   return !animal.is_ancient
+  // })
 
 
   useEffect(() => {
     if (isAncient) {
-      setFilteredAnimals(ancientAnimals)
+      setFilteredAnimals(animals.filter(animal => {
+        return animal.is_ancient
+      }))
     } else if (!isAncient) {
-      setFilteredAnimals(modernAnimals)
+      setFilteredAnimals(animals.filter(animal => {
+        return !animal.is_ancient
+      }))
     }
   }, [isAncient])
 
