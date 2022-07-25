@@ -10,7 +10,7 @@ const Home = () => {
     <section className='home-page'>
       <div className='home-text'>
         <div className='title'>
-          <h1 className='title-h1'>What Onn Earth</h1>
+          <h1 className='title-h1'>What On Earth</h1>
           {/* <h1></h1> */}
         </div>
         <div className='intro'>
