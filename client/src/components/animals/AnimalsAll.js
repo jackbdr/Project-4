@@ -13,7 +13,7 @@ const AnimalsAll = () => {
   useEffect(() => {
     const getAnimals = async () => {
       try {
-        const { data } = await axios.get('/api/animals')
+        const { data } = await axios.get('/api/animals/')
         console.log(data)
         setAnimals(data)
         setLoading(false)

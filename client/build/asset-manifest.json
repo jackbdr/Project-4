@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ff27988b.css",
+    "main.js": "/static/js/main.b8082814.js",
+    "static/js/483.99a9f4aa.chunk.js": "/static/js/483.99a9f4aa.chunk.js",
+    "static/media/flamingos.jpg": "/static/media/flamingos.f22f59e900870095bfc0.jpg",
+    "static/media/pink-mountains.jpg": "/static/media/pink-mountains.190c20c012b450de557a.jpg",
+    "static/media/water-wallpaper.jpg": "/static/media/water-wallpaper.1456b78944db56b98a96.jpg",
+    "static/media/axolotl.jpg": "/static/media/axolotl.4ba8610b79919276f2db.jpg",
+    "static/media/sloth-wallpaper.jpg": "/static/media/sloth-wallpaper.44864057932586559636.jpg",
+    "static/media/scales.png": "/static/media/scales.d544d43de302fc5d57fe.png",
+    "static/media/home-icon.png": "/static/media/home-icon.8b8837b370b9b5208290.png",
+    "static/media/knife-fork.png": "/static/media/knife-fork.ea85224ac467b2cf4aeb.png",
+    "static/media/pinkpin.png": "/static/media/pinkpin.fd73455c0da3567810d7.png",
+    "static/media/lifespan.png": "/static/media/lifespan.fa05eeb9412cefbf2bb0.png",
+    "static/media/arrow-down.png": "/static/media/arrow-down.f29131fbb3f001c6cd30.png",
+    "index.html": "/index.html",
+    "main.ff27988b.css.map": "/static/css/main.ff27988b.css.map",
+    "main.b8082814.js.map": "/static/js/main.b8082814.js.map",
+    "483.99a9f4aa.chunk.js.map": "/static/js/483.99a9f4aa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff27988b.css",
+    "static/js/main.b8082814.js"
+  ]
+}
