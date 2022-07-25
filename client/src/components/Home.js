@@ -19,7 +19,7 @@ const Home = () => {
         <div className='home-btns'>
           <Link className='explore-btn home-btn' to={'/map'}><h3>Explore</h3></Link>
           {!isUserAuth() &&
-            <Link className='login-btn home-btn' to={'/login'}><h3>Log In</h3></Link>
+            <Link className='login-btn home-btn' to={'/login'}><h3>LogIn</h3></Link>
           }
         </div>
       </div>
