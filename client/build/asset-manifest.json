@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ff27988b.css",
-    "main.js": "/static/js/main.b8082814.js",
+    "main.js": "/static/js/main.0950a914.js",
     "static/js/483.99a9f4aa.chunk.js": "/static/js/483.99a9f4aa.chunk.js",
     "static/media/flamingos.jpg": "/static/media/flamingos.f22f59e900870095bfc0.jpg",
     "static/media/pink-mountains.jpg": "/static/media/pink-mountains.190c20c012b450de557a.jpg",
@@ -16,11 +16,11 @@
     "static/media/arrow-down.png": "/static/media/arrow-down.f29131fbb3f001c6cd30.png",
     "index.html": "/index.html",
     "main.ff27988b.css.map": "/static/css/main.ff27988b.css.map",
-    "main.b8082814.js.map": "/static/js/main.b8082814.js.map",
+    "main.0950a914.js.map": "/static/js/main.0950a914.js.map",
     "483.99a9f4aa.chunk.js.map": "/static/js/483.99a9f4aa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff27988b.css",
-    "static/js/main.b8082814.js"
+    "static/js/main.0950a914.js"
   ]
 }
