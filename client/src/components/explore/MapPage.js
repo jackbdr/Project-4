@@ -30,7 +30,7 @@ const DisplayMap = () => {
   useEffect(() => {
     const getAnimals = async () => {
       try {
-        const { data } = await axios.get('/api/animals')
+        const { data } = await axios.get('/api/animals/')
         setAnimals(data)
         setIsAncient(true)
         console.log(data)
@@ -41,16 +41,19 @@ const DisplayMap = () => {
     getAnimals()
   }, [])
 
+  const ancientAnimals = animals.filter(animal => {
+    return animal.is_ancient
+  })
+  const modernAnimals = animals.filter(animal => {
+    return !animal.is_ancient
+  })
+
 
   useEffect(() => {
-    if (isAncient && animals !== []) {
-      setFilteredAnimals(animals.filter(animal => {
-        return animal.is_ancient
-      }))
-    } else if (!isAncient && animals !== []) {
-      setFilteredAnimals(animals.filter(animal => {
-        return !animal.is_ancient
-      }))
+    if (isAncient) {
+      setFilteredAnimals(ancientAnimals)
+    } else if (!isAncient) {
+      setFilteredAnimals(modernAnimals)
     }
   }, [isAncient])
 
