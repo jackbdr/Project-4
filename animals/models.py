@@ -26,7 +26,7 @@ class Animal(models.Model):
     added_by = models.ForeignKey(
         'jwt_auth.User',
         related_name='animals',
-        on_delete=models.CASCADE,
+        on_delete=models.CASCADE
     )
     # favourited_by = models.ManyToManyField(
     #   'jwt_auth.User',
