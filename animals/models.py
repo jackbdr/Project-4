@@ -27,7 +27,6 @@ class Animal(models.Model):
         'jwt_auth.User',
         related_name='animals',
         on_delete=models.CASCADE,
-        default=1
     )
     # favourited_by = models.ManyToManyField(
     #   'jwt_auth.User',
