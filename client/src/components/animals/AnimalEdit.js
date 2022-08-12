@@ -42,7 +42,7 @@ const AnimalEdit = () => {
   useEffect(() => {
     const getAnimal = async () => {
       try {
-        const { data } = await axios.get(`/api/animals/${id}`)
+        const { data } = await axios.get(`/api/animals/${id}/`)
         setAnimal(data)
         setFormData(data)
         console.log(data)
