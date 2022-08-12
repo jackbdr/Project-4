@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import ReactMapGL, { Marker, Source, Layer, Popup, attributionControl } from 'react-map-gl'
 
 import { MapAncientStyle } from './MapAncientStyle'
+import { MapModernStyle } from './MapModernStyle'
 
 import { isUserAuth } from '../helpers/Auth'
 
@@ -20,7 +21,7 @@ const DisplayMap = () => {
   const [zoomLevel, setZoomLevel] = useState(0)
 
   const accessToken = 'pk.eyJ1IjoiamFja2JkciIsImEiOiJjbDQ4azk2djMwMm5qM2NtaWF3YTBiOHRqIn0.B_CRBzLyOuY5KAV0quy-Hg'
-  const MapModernStyle = 'mapbox://styles/jackbdr/cl4cypbf6000t15mk3jy6tx18'
+  // const MapModernStyle = 'mapbox://styles/jackbdr/cl4cypbf6000t15mk3jy6tx18'
 
   const handleLogout = () => {
     window.localStorage.removeItem('WOE-user-token')
